@@ -1,0 +1,53 @@
+/* Responsive дизайн за фоновото изображение на по-малки екрани */
+@media (max-width: 768px) {
+    .hero-section {
+        background-position: top;
+    }
+}
+
+/* Основни стилове за body с фоново изображение */
+body {
+    background-image: url('/background.jpg'); /* Пътят към фоновото изображение */
+    background-size: cover; /* Покрива цялата страница */
+    background-repeat: no-repeat; /* Избягва повторението */
+    background-attachment: fixed; /* Фиксира фоновото изображение при скролиране */
+    background-position: center; /* Позиционира фона в центъра */
+    font-family: 'Nunito Sans', sans-serif; /* Примерен шрифт */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Flexbox стил за цялата страница */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Основен контейнер за съдържанието */
+app-root {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Секция, която ще заема свободното пространство, така че footer да е най-долу */
+main {
+    flex-grow: 1;
+}
+
+body {
+    overflow: hidden;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
