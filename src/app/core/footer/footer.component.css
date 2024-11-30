@@ -1,15 +1,14 @@
 /* Основен стил за footer */
 footer {
-    position: fixed;
+    position: absolute;  /* Променяме на absolute */
     bottom: 0;
     width: 100%;
-    margin: 0;
     padding: 20px;
     background-color: #333;
     color: white;
     text-align: center;
+    margin: 0;
 }
-
 
 /* Контейнер за организиране на секциите */
 .footer-container {
@@ -19,89 +18,4 @@ footer {
     margin: 0 auto;
     padding: 0 20px;
     flex-wrap: wrap;
-}
-
-/* Секция в footer-а */
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 20px;
-}
-
-.footer-section h4 {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.footer-section p,
-.footer-section ul,
-.footer-section a {
-    color: #ccc;
-    text-decoration: none;
-}
-
-.footer-section a:hover {
-    color: #ffdd57;
-}
-
-/* Стил за социални икони */
-.social-icons a {
-    color: #fff;
-    font-size: 18px;
-    margin-right: 10px;
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
-    color: #ffdd57;
-}
-
-/* Стил за навигационните линкове */
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 5px;
-}
-
-.footer-section ul li a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section ul li a:hover {
-    color: #ffdd57;
-}
-
-/* Копирайт стил */
-.footer-bottom {
-    text-align: center;
-    padding: 10px;
-    background-color: #222;
-    font-size: 13px;
-    color: #ccc;
-}
-
-.footer-bottom p {
-    margin: 0;
-}
-
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-section {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
 }

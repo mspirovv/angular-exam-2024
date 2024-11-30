@@ -1,11 +1,13 @@
+
 main {
-    padding: 20px;
-    flex-grow: 1; /* Позволява на main да заеме останалото място */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #333;
+    justify-content: center;  /* Центрираме по хоризонтала */
+    align-items: center;      /* Центрираме по вертикала */
+    min-height: 100vh;         /* Пълната височина на екрана */
+    padding: 20px;            /* Малка подложка около контейнера */
+    background-color: #f4f4f4; /* Светъл фон за контраста */
 }
+
 
 .welcome-section {
     text-align: center;
@@ -51,3 +53,4 @@ main {
 .product-card button:hover {
     background-color: #ffcc00;
 }
+
