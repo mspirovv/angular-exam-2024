@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
-
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { FormsModule, NgForm } from '@angular/forms';
+import { EmailDirective } from '../../directives/email.directive';
+import { DOMAINS } from '../../constants';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [RouterLink,FormsModule,EmailDirective],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  domains = DOMAINS;
+  constructor(private userService: UserService, private router: Router){}
 
-  loginForm!: FormGroup;
+  login(form:NgForm){
+    
+    if (form.invalid) {
+      console.error('Invalid Login Form!');
+      return;
+    }
 
-  constructor(private fb: FormBuilder,private router: Router) {}
+    const {email,password} = form.value;
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required,Validators.email]],
-      password: ['',[Validators.required,Validators.minLength(6)]],
+    this.userService.login(email,password).subscribe(() => {
+      this.router.navigate(['/'])
+
     })
+   
   }
 }
-

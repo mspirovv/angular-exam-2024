@@ -1,71 +1,112 @@
-/* Стил за формата */
-form {
-    background-color: #fff;
-    padding: 30px;
+/* Container styling */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;              /* 100% ширина на контейнера */
-    max-width: 400px;         /* Максимална ширина на формата */
-    text-align: center;       /* Центриране на текста в формата */
-    box-sizing: border-box;   /* Включва padding в общата ширина */
-    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-color: #fff;
 }
 
-/* Стил за заглавията */
-h1 {
-    font-size: 24px;
+/* Fieldset styling */
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
     color: #333;
-    margin-bottom: 10px;
-}
-
-h3 {
-    font-size: 16px;
-    color: #777;
     margin-bottom: 20px;
 }
 
-/* Стил за полетата */
-input[type="text"],
-input[type="password"] {
+/* Form field styling */
+.field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.field-icon label span {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+input {
+    width: calc(100% - 40px);
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007BFF;
+}
+
+/* Error styling */
+.input-error {
+    border-color: #FF6B6B;
+    background-color: #FFF5F5;
+}
+
+.error {
+    color: #FF6B6B;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Button styling */
+button {
     width: 100%;
     padding: 10px;
-    margin: 10px 0 20px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-/* Стил за бутона */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #45a049;
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
 }
 
-/* Стил за линка за регистрация */
-p {
-    font-size: 14px;
-    color: #555;
-    text-align: center; 
+button:hover:not(:disabled) {
+    background-color: #0056b3;
 }
 
-a {
-    color: #4CAF50;
+/* Link styling */
+.text-center a {
+    color: #007BFF;
     text-decoration: none;
-    font-weight: bold;
+    transition: color 0.3s;
 }
 
-a:hover {
-    text-decoration: underline;
+.text-center a:hover {
+    color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .container {
+        padding: 15px;
+    }
+
+    input {
+        padding: 8px 8px 8px 35px;
+    }
+
+    button {
+        font-size: 14px;
+    }
 }

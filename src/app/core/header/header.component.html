@@ -1,4 +1,7 @@
-<!-- header.component.html -->
+
+
+
+
 <header>
     <div class="logo">
         <h1>Магазин за добавки</h1>
@@ -10,11 +13,22 @@
             <li><a routerLink="/catalog"><i class="fas fa-box-open"></i> Продукти</a></li>
             <li><a routerLink="/about"><i class="fas fa-info-circle"></i> За нас</a></li>
             <li><a routerLink="/contact"><i class="fas fa-envelope"></i> Контакт</a></li>
+            @if(isLoggedIn ){
+                <li class="user-profile-btn">
+                    <a routerLink="/profile">
+                      <i class="fas fa-user-circle"></i> {{ username }}'s Profile
+                    </a>
+                  </li>
+    
+                <li>
+                    <a (click)="logout()">
+                      <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                  </li>
+            }   @else {
             <li><a routerLink="/login"><i class="fas fa-sign-in-alt"></i> Вход</a></li>
             <li><a routerLink="/register"><i class="fas fa-user-plus"></i> Регистрация</a></li>
-
-            
+            }
         </ul>
     </nav>
-    
 </header>
