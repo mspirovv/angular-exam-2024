@@ -8,6 +8,7 @@ export interface Product {
         "reviews": Post[],
         "_id": string,
         "productName": string,
+        "description": string,
         "productCategory": string,
         "productImage": string,
         "userId": User,

@@ -1,18 +1,15 @@
-<!-- @for (product of products; track $index) {
-<div class="container mt-4">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img [src]="product.imageUrl" class="card-img-top" alt="{{ product.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            <p class="card-text"><strong>${{ product.price }}</strong></p>
-            <a [routerLink]="['/catalog', product.id]" class="btn btn-primary">Details</a>
-          </div>
-        </div>
+<div class="product-list">
+  @if(products.length === 0) {
+    <div class="no-post">No products available.</div>
+  }
+  @else {
+    @for (product of products; track $index) {
+      <div class="product-card">
+        <img [src]="product.productImage" alt="{{ product.productName }}" />
+        <h3>{{ product.productName }}</h3>
+        <p>{{ product.description }}</p>
+        <button class="view-details">View Details</button>
       </div>
-    </div>
-  </div>
-}
-   -->
+    }
+  }
+</div>

@@ -21,7 +21,7 @@ export class ApiService {
     return null;
   }
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`);
+    return this.http.get<Product[]>(`http://localhost:3000/api/products`);
   }
 
   getProductById(id: string): Observable<Product> {
