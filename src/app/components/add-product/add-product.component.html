@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="new-theme-border">
+        <div class="header-background">
+            <span>New Product</span>
+        </div>
+        <form #form="ngForm" (ngSubmit)="addProduct(form)">
+            <div class="new-theme-title field">
+                <label for="productName">Title <span class="red">*</span></label>
+                <input type="text" name="productName" id="productName" ngModel #inputProductName="ngModel" required minlength="5" 
+                    [class.input-error]="inputProductName?.touched && inputProductName?.invalid">
+                @if(inputProductName?.touched){
+                    <div>
+                        @if(inputProductName?.errors?.['required']){
+                            <p class="error">Theme name is required.</p>
+                        }
+                        @if(inputProductName?.errors?.['minlength']){
+                            <p class="error">Theme name must be at least 5 characters long.</p>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="new-theme-content field">
+                <label for="description">Post <span class="red">*</span></label>
+                <textarea name="description" id="description" rows="8" class="height" ngModel #inputDescription="ngModel" required minlength="10" 
+                    [class.input-error]="inputDescription?.touched && inputDescription?.invalid"></textarea>
+                @if(inputDescription?.touched){
+                    <div>
+                        @if(inputDescription?.errors?.['required']){
+                            <p class="error">The field with your post is required.</p>
+                        }
+                        @if(inputDescription?.errors?.['minlength']){
+                            <p class="error">Post must be at least 10 characters long.</p>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="new-theme-category field">
+                <label for="productCategory">Category <span class="red">*</span></label>
+                <select name="productCategory" id="productCategory" ngModel #inputCategory="ngModel" required 
+                    [class.input-error]="inputCategory?.touched && inputCategory?.invalid">
+                    <option value="muscle">Покачване на маса</option>
+                    <option value="burning">Изгаряне на мазнини</option>
+                    <option value="vitamins">Витамини</option>
+                    <option value="preworkout">Предтренировъчни продукти</option>
+                </select>
+                @if(inputCategory?.touched){
+                    <div>
+                        @if(inputCategory?.errors?.['required']){
+                            <p class="error">Category is required.</p>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="new-theme-image field">
+                <label for="productImage">Product Image URL <span class="red">*</span></label>
+                <input type="url" name="productImage" id="productImage" ngModel #inputImage="ngModel" required
+                    [class.input-error]="inputImage?.touched && inputImage?.invalid">
+                @if(inputImage?.touched){
+                    <div>
+                        @if(inputImage?.errors?.['required']){
+                            <p class="error">Product image URL is required.</p>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="new-theme-buttons">
+                <button class="cancel" type="button">Cancel</button>
+                <button class="public" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Post</button>
+            </div>
+        </form>
+    </div>
+</div>

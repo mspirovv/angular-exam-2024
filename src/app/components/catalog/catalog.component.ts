@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product';
+import { Product } from '../../types/product';
 import { ApiService } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
 

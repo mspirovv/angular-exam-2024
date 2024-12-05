@@ -26,12 +26,12 @@ get isLogged(): boolean {
   }
 
 login(email: string , password: string){
- return this.http.post<userForAuth>(`/api/login`, { email,password})
+ return this.http.post<userForAuth>(`/api/login`, { email,password},{ withCredentials: true })
  .pipe(tap((user) => this.user$$.next(user)));
 }
 
 register(username:string, email: string  , password: string , rePassword:string){
-  return this.http.post<userForAuth>(`/api/register`, { username,email,password,rePassword})
+  return this.http.post<userForAuth>(`/api/register`, { username,email,password,rePassword}) // добавих auth
   .pipe(tap((user) => this.user$$.next(user)));
  }
 
@@ -40,6 +40,8 @@ getProfile(){
   .get<userForAuth>(`${this.apiUrl}/api/users/profile`, { withCredentials: true })
   .pipe(tap((user) => this.user$$.next(user)));
 }
+
+
 
 logout(){
   return this.http.post('/api/logout', {})

@@ -1,6 +1,6 @@
 export interface User {
-    "themes": string[],
-    "posts": string[],
+    "products": string[],
+    "reviews": string[],
     "_id": string,
     "tel": string,
     "email": string,
@@ -16,7 +16,8 @@ export interface User {
     email: string,
     password: string,
     id: string,
-  
+    token?: any;  // Добавете токен като опционално свойство
+
   }
 
   export interface profileDetails {

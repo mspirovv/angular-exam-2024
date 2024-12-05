@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/catalog',pathMatch: 'full'},
@@ -13,6 +14,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'error', component: ErrorMsgComponent}
+    {path: 'error', component: ErrorMsgComponent},
+    {path: 'add-product', component: AddProductComponent}
 
 ];
