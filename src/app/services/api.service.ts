@@ -24,10 +24,10 @@ export class ApiService {
     return this.http.get<Product[]>(`http://localhost:3000/api/products`);
   }
 
-  getProductById(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
-
+  getProductById(productId: string): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:3000/api/products/${productId}`);
   }
+  
 
   addReview(review: Review ): Observable<Review> {
     return this.http.post<Review>(`${this.baseUrl}/reviews`, review)
@@ -37,9 +37,13 @@ export class ApiService {
     const payLoad = {productName,description,productCategory,productImage}
     return this.http.post<Product>(`http://localhost:3000/api/products`, payLoad , { withCredentials: true })
   }
-  // createTheme(productName: string , description: string , category: string, productImage: string){
-  //   const payLoad = {productName,description,category,productImage}
-  //   return this.http.post<newProduct>(`/api/themes`, payLoad)
+  editProduct(productId: string, updatedProduct: Product): Observable<Product> {
+    return this.http.put<Product>(`http://localhost:3000/api/products/${productId}`, updatedProduct);
+  }  
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete<any>(`http://localhost:3000/api/products/${id}`);
+  }
 
-  // }
- }
+}
+ 
+ 

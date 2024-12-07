@@ -1,1 +1,13 @@
-<p>product-details works!</p>
+@if(product) {
+<div class="product-details">
+    <img [src]="product.productImage" alt="{{ product.productName }}" />
+    <h2>{{ product.productName }}</h2>
+    <p>{{ product.description }}</p>
+    <p><strong>Категория:</strong> {{ product.productCategory }}</p>
+  
+    <div class="buttons">
+      <button class="edit-btn" [routerLink]="['/edit-product', product._id]">Редактирай</button>
+      <button class="delete-btn" (click)="onDeleteProduct()" >Изтрий</button>
+    </div>
+  </div>
+}

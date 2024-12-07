@@ -1,19 +1,19 @@
 <div class="container">
     <div class="new-theme-border">
         <div class="header-background">
-            <span>Добави нов продукти</span>
+            <span>Редактирай продукт</span>
         </div>
-        <form #form="ngForm" (ngSubmit)="addProduct(form)">
+        <form #form="ngForm" (ngSubmit)="onEditProduct(form)">
             <div class="new-theme-title field">
-                <label for="productName">Име на продукта: <span class="red">*</span></label>
-                <input type="text" name="productName" id="productName" ngModel #inputProductName="ngModel" required minlength="5" 
+                <label for="productName">Име на продукта:<span class="red">*</span></label>
+                <input type="text" name="productName" id="productName" ngModel #inputProductName="ngModel" [ngModel]="product.productName" required minlength="5"
                     [class.input-error]="inputProductName?.touched && inputProductName?.invalid">
-                @if(inputProductName?.touched){
+                @if(inputProductName?.touched) {
                     <div>
-                        @if(inputProductName?.errors?.['required']){
+                        @if(inputProductName?.errors?.['required']) {
                             <p class="error">Theme name is required.</p>
                         }
-                        @if(inputProductName?.errors?.['minlength']){
+                        @else if(inputProductName?.errors?.['minlength']) {
                             <p class="error">Theme name must be at least 5 characters long.</p>
                         }
                     </div>
@@ -22,14 +22,14 @@
 
             <div class="new-theme-content field">
                 <label for="description">Описание:<span class="red">*</span></label>
-                <textarea name="description" id="description" rows="8" class="height" ngModel #inputDescription="ngModel" required minlength="10" 
+                <textarea name="description" id="description" rows="8" class="height" ngModel #inputDescription="ngModel" [ngModel]="product.description" required minlength="10"
                     [class.input-error]="inputDescription?.touched && inputDescription?.invalid"></textarea>
-                @if(inputDescription?.touched){
+                @if(inputDescription?.touched) {
                     <div>
-                        @if(inputDescription?.errors?.['required']){
+                        @if(inputDescription?.errors?.['required']) {
                             <p class="error">The field with your post is required.</p>
                         }
-                        @if(inputDescription?.errors?.['minlength']){
+                        @else if(inputDescription?.errors?.['minlength']) {
                             <p class="error">Post must be at least 10 characters long.</p>
                         }
                     </div>
@@ -38,16 +38,16 @@
 
             <div class="new-theme-category field">
                 <label for="productCategory">Категория:<span class="red">*</span></label>
-                <select name="productCategory" id="productCategory" ngModel #inputCategory="ngModel" required 
+                <select name="productCategory" id="productCategory" ngModel #inputCategory="ngModel" [ngModel]="product.productCategory" required
                     [class.input-error]="inputCategory?.touched && inputCategory?.invalid">
                     <option value="muscle">Покачване на маса</option>
                     <option value="burning">Изгаряне на мазнини</option>
                     <option value="vitamins">Витамини</option>
                     <option value="preworkout">Предтренировъчни продукти</option>
                 </select>
-                @if(inputCategory?.touched){
+                @if(inputCategory?.touched) {
                     <div>
-                        @if(inputCategory?.errors?.['required']){
+                        @if(inputCategory?.errors?.['required']) {
                             <p class="error">Category is required.</p>
                         }
                     </div>
@@ -56,11 +56,11 @@
 
             <div class="new-theme-image field">
                 <label for="productImage">Линк към снимка на продукта: <span class="red">*</span></label>
-                <input type="url" name="productImage" id="productImage" ngModel #inputImage="ngModel" required
+                <input type="url" name="productImage" id="productImage" ngModel #inputImage="ngModel" [ngModel]="product.productImage" required
                     [class.input-error]="inputImage?.touched && inputImage?.invalid">
-                @if(inputImage?.touched){
+                @if(inputImage?.touched) {
                     <div>
-                        @if(inputImage?.errors?.['required']){
+                        @if(inputImage?.errors?.['required']) {
                             <p class="error">Product image URL is required.</p>
                         }
                     </div>
@@ -68,8 +68,8 @@
             </div>
 
             <div class="new-theme-buttons">
-                <button class="cancel" type="button">Cancel</button>
-                <button class="public" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Post</button>
+                <button class="cancel" type="button" (click)="cancelEdit()">Cancel</button>
+                <button class="public" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Update</button>
             </div>
         </form>
     </div>

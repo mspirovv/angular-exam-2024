@@ -8,7 +8,7 @@
         <img [src]="product.productImage" alt="{{ product.productName }}" />
         <h3>{{ product.productName }}</h3>
         <p>{{ product.description }}</p>
-        <button class="view-details">View Details</button>
+        <button class="view-details" [routerLink]="['/catalog', product._id]" >View Details</button>
       </div>
     }
   }
