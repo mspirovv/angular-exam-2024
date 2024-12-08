@@ -21,16 +21,27 @@ export class ApiService {
     if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
     return null;
   }
-  // getProducts(): Observable<Product[]> {
-  //   return this.http.get<Product[]>(`http://localhost:3000/api/products`);
-  // }
 
-  getProducts(page: number, limit: number): Observable<PaginatedProducts> {
-    return this.http.get<PaginatedProducts>(`/api/products?page=${page}&limit=${limit}`);
+  getProducts(page: number, limit: number = 10): Observable<{ products: Product[]; totalPages: number }> {
+    return this.http.get<{ products: Product[]; totalPages: number }>(
+      `http://localhost:3000/api/products?page=${page}&limit=${limit}`
+    );
   }
+  
   getProductById(productId: string): Observable<Product> {
     return this.http.get<Product>(`http://localhost:3000/api/products/${productId}`);
   }
+  
+  searchProducts(query: string, page: number = 1, limit: number = 10): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/products/search`, {
+        params: {
+            query,
+            page: page.toString(),
+            limit: limit.toString()
+        }
+    });
+}
+
   
 
   addReview(review: Review ): Observable<Review> {

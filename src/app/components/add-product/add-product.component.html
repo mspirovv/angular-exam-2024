@@ -40,10 +40,10 @@
                 <label for="productCategory">Категория:<span class="red">*</span></label>
                 <select name="productCategory" id="productCategory" ngModel #inputCategory="ngModel" required 
                     [class.input-error]="inputCategory?.touched && inputCategory?.invalid">
-                    <option value="muscle">Покачване на маса</option>
-                    <option value="burning">Изгаряне на мазнини</option>
-                    <option value="vitamins">Витамини</option>
-                    <option value="preworkout">Предтренировъчни продукти</option>
+                    <option value="Покачване на маса">Покачване на маса</option>
+                    <option value="Изгаряне на мазнини">Изгаряне на мазнини</option>
+                    <option value="Витамини">Витамини</option>
+                    <option value="Предтренировъчни продукти">Предтренировъчни продукти</option>
                 </select>
                 @if(inputCategory?.touched){
                     <div>

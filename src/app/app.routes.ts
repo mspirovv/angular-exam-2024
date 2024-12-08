@@ -7,6 +7,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { SearchComponent } from './components/search/search.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/catalog',pathMatch: 'full'},
@@ -17,6 +18,7 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'error', component: ErrorMsgComponent},
-    {path: 'add-product', component: AddProductComponent}
+    {path: 'add-product', component: AddProductComponent},
+    {path: 'search', component: SearchComponent}
 
 ];

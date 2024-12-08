@@ -1,0 +1,47 @@
+<!-- search.component.html -->
+<div class="search-container">
+    <h2>Search Products</h2>
+    <div class="search-bar">
+      <input [(ngModel)]="searchQuery" placeholder="Search for products..." />
+      <button (click)="performSearch()">Search</button>
+    </div>
+  </div>
+  
+  <!-- Loading indicator -->
+  @if(isLoading) {
+    <div class="loading">Loading...</div>
+  }
+  
+  <!-- Product list -->
+  @if(searchResults.length > 0) {
+    <div class="product-list">
+      @for (product of searchResults; track trackByProductId) {
+        <div class="product-card">
+          <img [src]="product.productImage" alt="Product image" />
+          <h3>{{ product.productName }}</h3>
+          <p>{{ product.description }}</p>
+          <button class="view-details" [routerLink]="['/catalog', product._id]">View Details</button>
+        </div>
+      }
+    </div>
+  }
+  @if (totalPages > 1) {
+    <div class="pagination">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+        Previous
+      </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+        Next
+      </button>
+    </div>
+  }
+  
+  
+  <!-- No results message -->
+  @if (searchResults.length === 0 && !isLoading) {
+    <div class="no-results">
+      No products found.
+    </div>
+  }
+  
