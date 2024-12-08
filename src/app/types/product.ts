@@ -11,7 +11,7 @@ export interface Product {
         "description": string,
         "productCategory": string,
         "productImage": string,
-        "userId": string,
+        "userId": User,
         "created_at": string,
         "updatedAt": string,
         "__v": number;

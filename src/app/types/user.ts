@@ -15,7 +15,7 @@ export interface User {
     username: string,
     email: string,
     password: string,
-    id: string,
+    _id: string,
     token?: any;  // Добавете токен като опционално свойство
 
   }

@@ -18,6 +18,7 @@ export class UserService {
 
 get isLogged(): boolean {
   return !!this.user;
+
 }
   constructor(private http: HttpClient) { 
  this.user$.subscribe((user) => {
@@ -57,5 +58,9 @@ updateProfile(username:string,email:string,tel?:string){
   })
   .pipe(tap((user) => this.user$$.next(user)));
 
+}
+
+getCurrentUser() {
+  return this.user$$.asObservable();
 }
 }
