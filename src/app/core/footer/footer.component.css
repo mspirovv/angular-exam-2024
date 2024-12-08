@@ -1,21 +1,21 @@
-/* Основен стил за footer */
 footer {
-    position: absolute;  /* Променяме на absolute */
+    position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 20px;
     background-color: #333;
     color: white;
     text-align: center;
-    margin: 0;
-}
-
-/* Контейнер за организиране на секциите */
-.footer-container {
+    padding: 10px 0;
+  }
+  
+  
+  .footer-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    flex-wrap: wrap;
-}
+  }
+  

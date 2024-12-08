@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Product } from '../types/product';
 import { Review } from '../models/review';
 import { newProduct } from '../types/theme';
+import { PaginatedProducts } from '../types/paginated-products';
 
 
 @Injectable({
@@ -20,10 +21,13 @@ export class ApiService {
     if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
     return null;
   }
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:3000/api/products`);
-  }
+  // getProducts(): Observable<Product[]> {
+  //   return this.http.get<Product[]>(`http://localhost:3000/api/products`);
+  // }
 
+  getProducts(page: number, limit: number): Observable<PaginatedProducts> {
+    return this.http.get<PaginatedProducts>(`/api/products?page=${page}&limit=${limit}`);
+  }
   getProductById(productId: string): Observable<Product> {
     return this.http.get<Product>(`http://localhost:3000/api/products/${productId}`);
   }
