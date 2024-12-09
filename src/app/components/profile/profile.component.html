@@ -1,1 +1,99 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="profile">
+      <h3>User Info:</h3>
+      @if (!isEditMode){
+      <ng-container>
+      <div class="flex">
+          <p>Username: </p>
+          <p>{{profileDetails.username}}</p>
+      </div>
+      <div class="flex">
+          <p>Email: </p>
+          <p>{{profileDetails.email}}</p>
+      </div>
+    
+      <button class="edit-button" (click)="toggleEditMode()">Edit</button>
+  </ng-container>
+}
+@else {
+  <ng-container>
+  <form [formGroup]="form" (ngSubmit)="handleSave()">
+      <div class="flex">
+          <p>Username: </p>
+          <input type="text" name="username" id="username" value="Johny" formControlName="username" [value]="profileDetails.username">
+      </div>
+      @if(form.get('username')?.touched){
+          <div>
+              @if(form.get('username')?.errors?.['required']){
+              <p class="error">
+                  Username is required!</p>
+              }
+              @if(form.get('username')?.errors?.['minlength']){
+                  <p class="error">
+                      Username must be at least 5 characters!
+                  </p>
+                  }
+          </div>
+           }
+      <div class="flex">
+          <p>Email: </p>
+          <input type="email" name="email" id="email" value="john.doe@gmail.com" formControlName="email" [value]="profileDetails.email">
+      </div>
+      @if(form.get('email')?.touched){
+          <div>
+              @if(form.get('email')?.errors?.['required']){
+              <p class="error">
+                  Email is required!</p>
+              }
+              @if(form.get('email')?.errors?.['emailValidator']){
+                  <p class="error">
+                     Email is not valid!
+                  </p>
+                  }
+          </div>
+           }
+           <div class="flex">
+            <p>Password: </p>
+            <input 
+              type="password" 
+              name="password" 
+              id="password" 
+              formControlName="password" 
+              placeholder="Enter new password (optional)">
+          </div>
+          @if(form.get('password')?.touched){
+            <div>
+              @if(form.get('password')?.errors?.['minlength']){
+                <p class="error">
+                  Password must be at least 8 characters!
+                </p>
+              }
+            </div>
+          }
+      
+          
+      <button class="red-button" (click)="onCancel($event)" >Cancel</button>
+      <button class="green-button" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Save</button>
+  </form>
+</ng-container>
+
+}  
+    
+  </div>
+</div>
+
+<div class="products">
+  <h3>My Products:</h3>
+  @if (products.length > 0) {
+    @for ( product of products; track $index) {
+      <div class="product-item">
+        <p>{{ product.productName }}</p>
+        <p>{{ product.description }}</p>
+      </div>
+    }
+  }
+  @else {
+    <p>No products found.</p>
+  }
+</div>
+

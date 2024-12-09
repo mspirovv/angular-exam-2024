@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { userForAuth } from '../types/user';
+import { profileDetails, userForAuth } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -32,32 +32,26 @@ login(email: string , password: string){
 }
 
 register(username:string, email: string  , password: string , rePassword:string){
-  return this.http.post<userForAuth>(`/api/register`, { username,email,password,rePassword}) // добавих auth
+  return this.http.post<userForAuth>(`/api/register`, { username,email,password,rePassword})
   .pipe(tap((user) => this.user$$.next(user)));
  }
 
-getProfile(){
+ getProfile(){
   return this.http
-  .get<userForAuth>(`${this.apiUrl}/api/users/profile`, { withCredentials: true })
+  .get<userForAuth>('/api/users/profile')
   .pipe(tap((user) => this.user$$.next(user)));
 }
 
+updateProfile(username: string, email: string, password?: string) {
+  return this.http
+    .put<userForAuth>('/api/users/profile', { username, email, password }) 
+    .pipe(tap((user) => this.user$$.next(user)));
+}
 
 
 logout(){
   return this.http.post('/api/logout', {})
   .pipe(tap((user) => this.user$$.next(null)));
-}
-
-updateProfile(username:string,email:string,tel?:string){
-  
-  return this.http.put<userForAuth>('/api/users/profile', { 
-    username,
-    email,
-    tel
-  })
-  .pipe(tap((user) => this.user$$.next(user)));
-
 }
 
 getCurrentUser() {

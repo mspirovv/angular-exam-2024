@@ -16,12 +16,14 @@ export interface User {
     email: string,
     password: string,
     _id: string,
-    token?: any;  // Добавете токен като опционално свойство
+    tel?: string,
+    token?: any; 
 
   }
 
   export interface profileDetails {
-    username: string,
-    email: string,
-    tel: string,
+    username: string;
+    email: string;
+    password?: string;
   }
+  

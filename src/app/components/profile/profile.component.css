@@ -1,0 +1,169 @@
+/* Основни стилове за контейнера */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стил за профилната част */
+.profile {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* За да изглеждат нещата подредени */
+.flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* намалено разстояние между редовете */
+}
+
+/* Заглавията на полетата (Username, Email) */
+.profile p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;  /* премахваме излишните маргини */
+}
+
+/* Стил за стойностите на полетата */
+.profile div {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Стил за бутоните */
+.edit-button, .green-button, .red-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* Стил за активния бутон за редакция */
+.edit-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+/* Стил за бутона за запис */
+.green-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.green-button:hover {
+    background-color: #218838;
+}
+
+/* Стил за бутона за отмяна */
+.red-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.red-button:hover {
+    background-color: #c82333;
+}
+
+/* Формуляри */
+form {
+    margin-top: 20px;
+}
+
+/* Стил за грешки във формата */
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+/* Стил за инпутите */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Стил за инпутите при фокус */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Стил за бутоните в зависимост от валидността на формата */
+button[disabled] {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+/* Добавяне на padding и граници към формата */
+form .flex {
+    margin-top: 10px; /* Намалено разстояние между полетата */
+}
+
+/* Специален стил за добавяне на марж около всеки елемент */
+form p {
+    font-size: 16px;
+    color: #333;
+    margin: 0; /* премахва разстоянието между елементите */
+}
+
+/* profile.component.css */
+
+.profile {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .products {
+    margin-top: 20px;
+  }
+  
+  .product-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #fff;
+  }
+  
+  .product-item p {
+    margin: 5px 0;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  

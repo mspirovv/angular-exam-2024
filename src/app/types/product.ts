@@ -17,7 +17,10 @@ export interface Product {
         "__v": number;
       }
 
-      export interface PaginatedProducts {
-        products: Product[];  // Масив с продукти
-        totalPages: number;   // Общо количество страници
+  
+      export interface ProductResponse {
+        currentPage: number;
+        products: Product[];
+        totalPages: number;
+        totalProducts: number;
       }
