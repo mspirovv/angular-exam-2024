@@ -12,6 +12,7 @@ export interface Product {
         "productCategory": string,
         "productImage": string,
         "userId": User,
+        "likesCount": string[],
         "created_at": string,
         "updatedAt": string,
         "__v": number;

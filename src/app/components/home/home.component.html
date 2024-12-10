@@ -1,0 +1,23 @@
+
+<div class="intro-text">
+    <h1>Добре дошли в нашия онлайн каталог!</h1>
+    <p>Открийте най-добрите и най-харесвани продукти, избрани от нашите потребители.</p>
+
+    <h2>Топ 5 най-харесвани продукти:</h2> 
+  </div>
+<div class="top-products">
+    @for(product of topProducts; track $index) {
+    <div class="product-card" >
+      <img [src]="product.productImage" alt="{{ product.productName }}">
+      <h3>{{ product.productName }}</h3>
+      <p>Лайкове: {{ product.likesCount.length }}</p>
+      <button [routerLink]="['/catalog', product._id]">Виж още</button>
+    </div>
+}
+  </div>
+
+  <div class="call-to-action">
+    <h2>Не губете време!</h2>
+    <p>Разгледайте каталога с продукти на сайта.</p>
+    <button [routerLink]="['/catalog']">Разгледайте продуктите</button>
+  </div>

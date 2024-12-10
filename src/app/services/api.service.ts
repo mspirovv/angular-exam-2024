@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product, ProductResponse } from '../types/product';
 import { Review } from '../models/review';
-import { newProduct } from '../types/theme';
-import { PaginatedProducts } from '../types/paginated-products';
+
 
 
 @Injectable({
@@ -21,6 +20,13 @@ export class ApiService {
     if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
     return null;
   }
+
+ 
+  getTopProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>('http://localhost:3000/api/products/top-products');
+  }
+  
+  
 
   getProducts(page: number, limit: number = 10): Observable<{ products: Product[]; totalPages: number }> {
     return this.http.get<{ products: Product[]; totalPages: number }>(
@@ -42,16 +48,12 @@ export class ApiService {
     });
 }
 
-getUserProducts(): Observable<ProductResponse> {
+getUserProducts(page: number, limit: number): Observable<ProductResponse> {
   console.log('Calling backend to get products'); // За дебъгване
-  return this.http.get<ProductResponse>(`http://localhost:3000/api/products/`);
+  return this.http.get<ProductResponse>(
+    `http://localhost:3000/api/products?page=${page}&limit=${limit}`
+  );
 }
-
-
-  addReview(review: Review ): Observable<Review> {
-    return this.http.post<Review>(`${this.baseUrl}/reviews`, review)
-  }
-
   createProduct(productName: string , description: string , productCategory: string, productImage: string){
     const payLoad = {productName,description,productCategory,productImage}
     return this.http.post<Product>(`http://localhost:3000/api/products`, payLoad , { withCredentials: true })
@@ -63,6 +65,14 @@ getUserProducts(): Observable<ProductResponse> {
     return this.http.delete<any>(`http://localhost:3000/api/products/${id}`);
   }
 
+  addLike(body: { productId: string, userId: string }) {
+    return this.http.post<any>(`http://localhost:3000/api/products/${body.productId}/like`, body);
+  }
+  
+  removeLike(body: { productId: string, userId: string }) {
+    return this.http.post<any>(`http://localhost:3000/api/products/${body.productId}/unlike`, body);
+  }
+  
+  
+
 }
- 
- 

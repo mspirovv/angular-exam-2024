@@ -1,12 +1,21 @@
 @if(product) {
     <div class="product-details">
-      <img [src]="product.productImage" alt="{{ product.productName }}" />
-      <h2>{{ product.productName }}</h2>
-      <p>{{ product.description }}</p>
-      <p><strong>Категория:</strong> {{ product.productCategory }}</p>
+      <div class="product-image">
+        <img [src]="product.productImage" alt="{{ product.productName }}" />
+      </div>
+      <div class="product-info">
+        <h2>{{ product.productName }}</h2>
+        <p class="product-description">{{ product.description }}</p>
+        <p><strong>Категория:</strong> {{ product.productCategory }}</p>
+        <p class="like-count">Харесвания: {{ product.likesCount.length }}</p>
+    </div>
+        @if(isLoggedIn) {
+        <div><button class="like-button" (click)="toggleLike()">
+          {{ currentUserId && currentUserId !== null && product.likesCount.includes(currentUserId) ? 'Премахни харесване' : 'Харесай' }}
+        </button>
+      </div>
   
-      @if(isLoggedIn) {
-  
+      
         @if(isCreator) {
           <div class="buttons">
             <button class="edit-btn" [routerLink]="['/edit-product', product._id]">Редактирай</button>

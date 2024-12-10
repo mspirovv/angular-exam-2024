@@ -1,169 +1,166 @@
-/* Основни стилове за контейнера */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Стил за профилната част */
 .profile {
-    text-align: left;
-    padding-left: 20px;
-}
-
-.profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 20px;
+    max-width: 600px; /* Ограничаване на ширината */
+    margin: 0 auto; /* Центриране */
+    background-color: #f9f9f9; /* Светъл фон */
+    border: 1px solid #ddd; /* Лека рамка */
+    border-radius: 10px; /* Заоблени ъгли */
+    padding: 20px; /* Разстояние вътре */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Лека сянка */
 }
 
 .profile h3 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    text-align: center; /* Центриране на заглавието */
+    color: #333; /* Тъмен цвят на текста */
+    margin-bottom: 20px; /* Разстояние от съдържанието под заглавието */
 }
 
-/* За да изглеждат нещата подредени */
 .flex {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px; /* намалено разстояние между редовете */
+    justify-content: space-between; /* Разделяне на реда на две части */
+    margin-bottom: 15px; /* Разстояние между редовете */
 }
 
-/* Заглавията на полетата (Username, Email) */
-.profile p {
-    font-size: 16px;
-    color: #555;
-    margin: 0;  /* премахваме излишните маргини */
+.flex p {
+    margin: 0;
+    font-size: 16px; /* По-голям текст */
+    color: #555; /* Средно-сив цвят */
 }
 
-/* Стил за стойностите на полетата */
-.profile div {
-    font-size: 16px;
-    color: #333;
+.error {
+    color: #ff4d4d; /* Ярко червен за грешки */
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-/* Стил за бутоните */
-.edit-button, .green-button, .red-button {
-    padding: 10px 20px;
-    font-size: 16px;
+/* Бутоните */
+.edit-button, .red-button, .green-button {
+    padding: 8px 12px;
     border: none;
     border-radius: 5px;
+    color: #fff; /* Бял цвят на текста */
     cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Стил за активния бутон за редакция */
+/* Основен фон за бутоните */
 .edit-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #6c63ff; /* Лилав */
 }
 
-.edit-button:hover {
-    background-color: #45a049;
-}
-
-/* Стил за бутона за запис */
-.green-button {
-    background-color: #28a745;
-    color: white;
-}
-
-.green-button:hover {
-    background-color: #218838;
-}
-
-/* Стил за бутона за отмяна */
 .red-button {
-    background-color: #dc3545;
-    color: white;
+    background-color: #ff4d4d; /* Червен */
+}
+
+.green-button {
+    background-color: #28a745; /* Зелен */
+}
+
+/* Цвят при hover */
+.edit-button:hover {
+    background-color: #4d47d6; /* По-тъмен лилав */
 }
 
 .red-button:hover {
-    background-color: #c82333;
+    background-color: #cc0000; /* По-тъмен червен */
 }
 
-/* Формуляри */
-form {
-    margin-top: 20px;
+.green-button:hover {
+    background-color: #1e7e34; /* По-тъмен зелен */
 }
 
-/* Стил за грешки във формата */
-.error {
-    color: red;
-    font-size: 14px;
+/* Стил за деактивирани бутони */
+.edit-button:disabled, .red-button:disabled, .green-button:disabled {
+    background-color: #ddd; /* Светлосив за деактивиран бутон */
+    cursor: not-allowed; /* Курсор "не е позволено" */
 }
 
-/* Стил за инпутите */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    font-size: 16px;
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f8f8f8;
+    padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-/* Стил за инпутите при фокус */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #007BFF;
-    outline: none;
-}
-
-/* Стил за бутоните в зависимост от валидността на формата */
-button[disabled] {
-    background-color: grey;
-    cursor: not-allowed;
-}
-
-/* Добавяне на padding и граници към формата */
-form .flex {
-    margin-top: 10px; /* Намалено разстояние между полетата */
-}
-
-/* Специален стил за добавяне на марж около всеки елемент */
-form p {
-    font-size: 16px;
-    color: #333;
-    margin: 0; /* премахва разстоянието между елементите */
-}
-
-/* profile.component.css */
-
-.profile {
-    padding: 20px;
-    background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .products {
-    margin-top: 20px;
-  }
-  
-  .product-item {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
     margin-bottom: 15px;
-    background-color: #fff;
-  }
-  
-  .product-item p {
+    transition: box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-item p {
     margin: 5px 0;
-  }
-  
-  h3 {
+}
+
+.product-item p:first-of-type {
+    font-weight: bold;
+    font-size: 1.1em;
     color: #333;
-  }
-  
+}
+
+.view-details {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #6c63ff; /* Лилав за основния фон */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Цвят при hover за .view-details */
+.view-details:hover {
+    background-color: #4d47d6; /* По-тъмен лилав при hover */
+    transform: translateY(-2px); /* Малко движение */
+}
+
+.view-details:active {
+    transform: translateY(0); /* Възвръща обратно движението при натиск */
+}
+
+@media (max-width: 768px) {
+    .product-item {
+        align-items: stretch;
+    }
+
+    .product-item img {
+        align-self: center;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.pagination button {
+    color: #fff;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #6c63ff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #e0e0e0;
+}
+
+

@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
   currentUserId: string | null = null; 
   isCreator: boolean = false; 
   isLoggedIn: boolean = false
+  
 
   constructor(
     private apiService: ApiService, 
@@ -26,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
     private userService: UserService
   ) {}
 
+  
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
     this.getCurrentUserId(); 
@@ -44,6 +46,36 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+  toggleLike() {
+    if (!this.currentUserId) {
+      console.log("Потребителят не е логнат!");
+      return;
+    }
+  
+    const body = {
+      productId: this.product._id, // ID на продукта
+      userId: this.currentUserId // ID на потребителя
+    };
+  
+    if (this.product.likesCount.includes(this.currentUserId)) {
+      // Премахване на лайк
+      this.apiService.removeLike(body).subscribe((response) => {
+        this.product.likesCount = response.likesCount;
+      }, (error) => {
+        console.error('Error removing like:', error);
+      });
+    } else {
+      // Добавяне на лайк
+      this.apiService.addLike(body).subscribe((response) => {
+        this.product.likesCount = response.likesCount;
+      }, (error) => {
+        console.error('Error adding like:', error);
+      });
+    }
+  }
+  
+  
+  
   getCurrentUserId(): void {
     this.userService.getCurrentUser().subscribe(
       (user) => { 

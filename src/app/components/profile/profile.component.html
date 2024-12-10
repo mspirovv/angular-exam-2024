@@ -87,13 +87,31 @@
   @if (products.length > 0) {
     @for ( product of products; track $index) {
       <div class="product-item">
+        <img [src]="product.productImage" alt="{{ product.productName }}" />
         <p>{{ product.productName }}</p>
-        <p>{{ product.description }}</p>
+        <p>{{ product.productCategory }}</p>
+        <button class="view-details" [routerLink]="['/catalog', product._id]">View Details</button>
       </div>
     }
   }
   @else {
     <p>No products found.</p>
   }
+</div>
+
+<div class="pagination">
+  <button
+    [disabled]="currentPage === 1"
+    (click)="changePage(currentPage - 1)"
+  >
+    Previous
+  </button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button
+    [disabled]="currentPage === totalPages || totalPages === 0"
+    (click)="changePage(currentPage + 1)"
+  >
+    Next
+  </button>
 </div>
 
