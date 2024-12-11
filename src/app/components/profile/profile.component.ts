@@ -13,26 +13,25 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'] // Поправено: styleUrl -> styleUrls
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
 
   isEditMode: boolean = false;
   products: Product[] = [];
   
-  // Параметри за пагинация
-  currentPage: number = 1; // Текуща страница
-  pageSize: number = 5; // Продукти на страница
-  totalProducts: number = 0; // Общо продукти
-  totalPages: number = 0; // Общо страници
+  
+  currentPage: number = 1;
+  pageSize: number = 5; 
+  totalProducts: number = 0; 
+  totalPages: number = 0; 
 
-  // Детайли на профила
+
   profileDetails: profileDetails = {
     username: '',
     email: '',
   };
 
-  // Създаване на формуляра
   form = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(5)]),
     email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
@@ -42,7 +41,6 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    // Зареждане на информацията за потребителя
     const { username, email } = this.userService.user!;
     this.profileDetails = { username, email };
 
@@ -52,16 +50,14 @@ export class ProfileComponent implements OnInit {
       password: '',
     });
 
-    console.log('Calling loadUserProducts');
     this.loadUserProducts();
   }
 
-  // Зареждане на продуктите на потребителя
+
   loadUserProducts(): void {
-    console.log('Sending request to fetch products');
+  
     this.apiService.getUserProducts(this.currentPage, this.pageSize).subscribe(
       (response: ProductResponse) => {
-        console.log('Loaded products:', response);
         this.products = response.products;
         this.totalProducts = response.totalProducts || 0;
         this.totalPages = Math.max(Math.ceil(this.totalProducts / this.pageSize), 1);

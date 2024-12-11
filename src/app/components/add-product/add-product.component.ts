@@ -30,7 +30,7 @@ export class AddProductComponent {
     this.apiService.createProduct(productName, description,productCategory,productImage).subscribe(
       response => {
         console.log('Product created successfully:', response);
-        this.router.navigate(['/']);
+        this.router.navigate(['/catalog']);
       },
       error => {
         console.error('Error creating product:', error);

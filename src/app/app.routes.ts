@@ -10,20 +10,21 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { SearchComponent } from './components/search/search.component';
 import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page-404/page-404.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/home',pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'catalog', component: CatalogComponent},
-    {path: 'catalog/:id', component: ProductDetailsComponent},
-    {path: 'edit-product/:id', component: EditProductComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: 'profile', component: ProfileComponent},
-    {path: 'error', component: ErrorMsgComponent},
-    {path: 'add-product', component: AddProductComponent},
-    {path: 'search', component: SearchComponent},
-    {path: '**', component: Page404Component }
-
-];
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: 'catalog', component: CatalogComponent },
+    { path: 'catalog/:id', component: ProductDetailsComponent, },
+    { path: 'edit-product/:id', component: EditProductComponent,  },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'profile', component: ProfileComponent, }, 
+    { path: 'error', component: ErrorMsgComponent },
+    { path: 'add-product', component: AddProductComponent, }, 
+    { path: 'search', component: SearchComponent },
+    { path: '**', component: Page404Component }
+  ];
+  

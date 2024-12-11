@@ -46,7 +46,7 @@ register(username:string, email: string  , password: string , rePassword:string)
 
  getProfile(){
   return this.http
-  .get<userForAuth>('/api/users/profile')
+  .get<userForAuth>('/api/users/profile',)
   .pipe(tap((user) => this.user$$.next(user)));
 }
 

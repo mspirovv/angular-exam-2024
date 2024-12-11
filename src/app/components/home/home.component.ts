@@ -21,10 +21,8 @@ export class HomeComponent implements OnInit {
 
 
   getTopProducts(): void {
-    console.log('Изпращам заявка за топ продукти');
     this.apiService.getTopProducts().subscribe(
       (data) => {
-        console.log('Топ продукти получени:', data);
         this.topProducts = data;
       },
       (error: string) => {
