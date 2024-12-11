@@ -72,20 +72,19 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  // Промяна на текущата страница
   changePage(page: number): void {
     if (page > 0 && page <= this.totalPages) {
       this.currentPage = page;
-      this.loadUserProducts(); // Зарежда продукти за новата страница
+      this.loadUserProducts(); 
     }
   }
 
-  // Превключване на режима за редакция
+
   toggleEditMode(): void {
     this.isEditMode = !this.isEditMode;
   }
 
-  // Запис на промените в профила
+
   handleSave(): void {
     if (this.form.invalid) {
       return;
@@ -94,12 +93,12 @@ export class ProfileComponent implements OnInit {
     const { username, email, password } = this.form.value as profileDetails;
 
     this.userService.updateProfile(username, email, password).subscribe(() => {
-      this.profileDetails = { username, email }; // Актуализация на детайлите
+      this.profileDetails = { username, email }; 
       this.toggleEditMode();
     });
   }
 
-  // Отмяна на редакцията
+
   onCancel(event: Event): void {
     event.preventDefault();
     this.form.setValue({

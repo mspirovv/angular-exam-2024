@@ -1,4 +1,4 @@
-<!-- search.component.html -->
+
 <div class="search-container">
     <h2>Search Products</h2>
     <div class="search-bar">
@@ -7,12 +7,12 @@
     </div>
   </div>
   
-  <!-- Loading indicator -->
+  
   @if(isLoading) {
     <div class="loading">Loading...</div>
   }
   
-  <!-- Product list -->
+
   @if(searchResults.length > 0) {
     <div class="product-list">
       @for (product of searchResults; track trackByProductId) {
@@ -38,7 +38,6 @@
   }
   
   
-  <!-- No results message -->
   @if (searchResults.length === 0 && !isLoading) {
     <div class="no-results">
       No products found.

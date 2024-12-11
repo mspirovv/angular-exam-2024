@@ -4,17 +4,27 @@ import { UserService } from '../../services/user.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { EmailDirective } from '../../directives/email.directive';
 import { DOMAINS } from '../../constants';
+import { ErrorMsgComponent } from '../review-form/error-msg/error-msg.component';
+import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
+
+
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink,FormsModule,EmailDirective],
+  imports: [RouterLink,FormsModule,EmailDirective,ErrorMsgComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   domains = DOMAINS;
-  constructor(private userService: UserService, private router: Router){}
+  hasError: boolean = false;
+  constructor(private userService: UserService, private router: Router, private errorMsgService: ErrorMsgService){
+    this.errorMsgService.apiError$.subscribe((err) => {
+      this.hasError = !!err;
+    });
+  }
 
   login(form:NgForm){
     
@@ -24,11 +34,9 @@ export class LoginComponent {
     }
 
     const {email,password} = form.value;
-
     this.userService.login(email,password).subscribe(() => {
       this.router.navigate(['/'])
-
-    })
-   
+    }
+  );
   }
 }

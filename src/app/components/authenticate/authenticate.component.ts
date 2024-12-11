@@ -14,6 +14,8 @@ export class AuthenticateComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    const hasAuthCookie = this.hasAuthCookie();
+    if (hasAuthCookie) {
     this.userService.getProfile().subscribe({
       next: () => {
         this.isAuthenticating = false;
@@ -25,7 +27,12 @@ export class AuthenticateComponent implements OnInit {
           this.isAuthenticating = false;
       },
     })
-
+  } else {
+    this.isAuthenticating = false;
+  }
+  }
+  private hasAuthCookie(): boolean {
+    return document.cookie.includes('auth-cookie');
   }
 
 }

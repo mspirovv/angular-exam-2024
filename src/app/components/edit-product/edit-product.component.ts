@@ -75,8 +75,6 @@ export class EditProductComponent implements OnInit {
       created_at: this.product.created_at,
       updatedAt: new Date().toISOString(), 
       __v: this.product.__v,
-      subscribers: this.product.subscribers || [],  
-      reviews: this.product.reviews || [] 
     };
     console.log(formValues)
   

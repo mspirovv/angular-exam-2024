@@ -1,4 +1,4 @@
-/* Центриране и стил на текстовете */
+
 .intro-text, .call-to-action {
     text-align: center;
     margin-bottom: 30px;
@@ -18,7 +18,7 @@
     margin: 0 auto 20px;
   }
   
-  /* Стил за бутона в call-to-action */
+  
   .call-to-action button {
     background-color: #4CAF50;
     color: white;
@@ -35,15 +35,14 @@
     background-color: #45a049;
   }
   
-  /* Основен контейнер за топ продуктите */
   .top-products {
     display: flex;
-    justify-content: flex-start; /* Ляво подравняване */
-    align-items: flex-start; /* По начало */
+    justify-content: flex-start; 
+    align-items: flex-start;
     gap: 20px;
     margin-top: 40px;
-    flex-wrap: nowrap; /* Продуктите ще се подреждат на един ред, без да прехвърлят на нов */
-    overflow-x: auto; /* Позволява превъртане на реда с продукти ако е нужно */
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
   }
   
   .top-products h2 {
@@ -55,9 +54,9 @@
     
   }
   
-  /* Продуктова карта - размери, разположение и ефекти */
+
   .product-card {
-    width: 250px; /* Статична ширина за продуктите */
+    width: 250px; 
     margin: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -73,24 +72,24 @@
     transform: scale(1.05);
   }
   
-  /* За мобилни устройства - стилизация */
+
   @media (max-width: 768px) {
     .product-card {
-      width: 200px; /* Малка ширина за мобилни устройства */
+      width: 200px; 
     }
   }
   
   @media (max-width: 480px) {
     .product-card {
-      width: 150px; /* Много по-малка ширина за малки екрани */
+      width: 150px; 
     }
   }
   
-  /* Снимки на продуктите - изравняване на размерите */
+
   .product-card img {
     width: 100%;
-    height: 150px; /* Променяме височината на снимките */
-    object-fit: contain; /* Възстановяваме нормалния размер на изображенията, без да се изрязват */
+    height: 150px; 
+    object-fit: contain; 
     border-radius: 5px;
   }
   
@@ -126,7 +125,7 @@
 
   .top-products .call-to-action button {
     display: block;
-    margin: 0 auto; /* Центрира бутона хоризонтално */
+    margin: 0 auto; 
     background-color: #4CAF50;
     color: white;
     padding: 15px 25px;

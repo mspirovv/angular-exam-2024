@@ -1,11 +1,11 @@
 .container {
     width: 90%;
-    max-width: 400px; /* Ограничете ширината */
-    margin: 40px auto; /* Отстояние отгоре и центриране */
+    max-width: 400px;
+    margin: 40px auto; 
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Добавете лека сянка */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .new-theme-border {
@@ -43,12 +43,12 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
     border-color: #007bff;
     outline: none;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Лека сянка при фокус */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); 
 }
 
 textarea {
     min-height: 80px;
-    resize: vertical; /* Позволете промяна на размера вертикално */
+    resize: vertical; 
 }
 
 .new-theme-buttons {
@@ -100,12 +100,12 @@ button.public:hover {
     font-weight: bold;
 }
 
-/* Центрирайте формата вертикално */
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Цялата височина на екрана */
+    min-height: 100vh; 
     background-color: #f1f1f1;
     margin: 0;
 }

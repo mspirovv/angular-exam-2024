@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product, ProductResponse } from '../types/product';
-import { Review } from '../models/review';
+
 
 
 
@@ -49,7 +49,6 @@ export class ApiService {
 }
 
 getUserProducts(page: number, limit: number): Observable<ProductResponse> {
-  console.log('Calling backend to get products'); // За дебъгване
   return this.http.get<ProductResponse>(
     `http://localhost:3000/api/products?page=${page}&limit=${limit}`
   );

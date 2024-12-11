@@ -22,18 +22,8 @@
             </p>   </div>
         }
     }
-            <!-- <div>
-            @if (inputEmail?.errors?.['required']) {
-        <p class="error">
-            Email is not valid!
-        </p> 
-    }
-</div> -->
-
-
-
             <p class="field field-icon">
-                <label for="password"><span><i class="fas fa-lock"></i></span></label>
+              <label for="password"><span><i class="fas fa-lock"></i></span></label>
                 <input [class]="(inputPassword?.touched &&inputPassword?.errors?.['required']) || (inputPassword?.touched && inputPassword?.errors?.['minlength']) ? 'input-error': ''"  type="password" name="password" id="password" placeholder="******" ngModel #inputPassword="ngModel" minlength="5" required="true">
             </p>
             @if(inputPassword.touched){
@@ -49,10 +39,6 @@
                     }
             </div>
              }
-            <!-- 
-            <p class="error">
-                Password must be at least 4 characters!
-            </p> -->
 
             <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Login</button>
 
@@ -60,6 +46,12 @@
                 Have an account?
                 <a routerLink="/register">Register</a>
             </p>
+
+            @if(hasError) {
+                <div class="error">
+                   <p>  <app-error-msg /></p>
+                 </div>
+               }
 
         </fieldset>
     </form>

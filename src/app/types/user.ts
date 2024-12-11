@@ -1,6 +1,5 @@
 export interface User {
     "products": string[],
-    "reviews": string[],
     "_id": string,
     "tel": string,
     "email": string,

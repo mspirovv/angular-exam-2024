@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { profileDetails, userForAuth } from '../types/user';
+import {  userForAuth } from '../types/user';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -26,10 +26,18 @@ get isLogged(): boolean {
  })
   }
 
-login(email: string , password: string){
- return this.http.post<userForAuth>(`/api/login`, { email,password},{ withCredentials: true })
- .pipe(tap((user) => this.user$$.next(user)));
-}
+  login(email: string, password: string) {
+    return this.http
+      .post<userForAuth>('/api/login', { email, password }, { withCredentials: true })
+      .pipe(
+        tap((user) => this.user$$.next(user)), 
+        catchError((error) => {
+          
+          const errorMessage = error?.error?.message || 'Грешен имейл адрес или парола.';
+          return throwError(errorMessage); 
+        })
+      );
+  }
 
 register(username:string, email: string  , password: string , rePassword:string){
   return this.http.post<userForAuth>(`/api/register`, { username,email,password,rePassword})

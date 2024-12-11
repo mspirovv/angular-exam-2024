@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../types/product';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { ElapsedTimePipe } from '../../shared/pipes/elapsed-time.pipe';
+
 
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,ElapsedTimePipe],
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
@@ -53,19 +54,19 @@ export class ProductDetailsComponent implements OnInit {
     }
   
     const body = {
-      productId: this.product._id, // ID на продукта
-      userId: this.currentUserId // ID на потребителя
+      productId: this.product._id,
+      userId: this.currentUserId
     };
   
     if (this.product.likesCount.includes(this.currentUserId)) {
-      // Премахване на лайк
+   
       this.apiService.removeLike(body).subscribe((response) => {
         this.product.likesCount = response.likesCount;
       }, (error) => {
         console.error('Error removing like:', error);
       });
     } else {
-      // Добавяне на лайк
+  
       this.apiService.addLike(body).subscribe((response) => {
         this.product.likesCount = response.likesCount;
       }, (error) => {

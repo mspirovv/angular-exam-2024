@@ -8,6 +8,9 @@
         <p class="product-description">{{ product.description }}</p>
         <p><strong>Категория:</strong> {{ product.productCategory }}</p>
         <p class="like-count">Харесвания: {{ product.likesCount.length }}</p>
+        <p>Дата на създаване: {{ product.created_at | elapsedTime  }}</p>
+      
+        
     </div>
         @if(isLoggedIn) {
         <div><button class="like-button" (click)="toggleLike()">

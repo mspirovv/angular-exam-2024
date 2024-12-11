@@ -10,7 +10,7 @@
     <div class="product-card" >
       <img [src]="product.productImage" alt="{{ product.productName }}">
       <h3>{{ product.productName }}</h3>
-      <p>Лайкове: {{ product.likesCount.length }}</p>
+      <p>Харесвания: {{ product.likesCount.length }}</p>
       <button [routerLink]="['/catalog', product._id]">Виж още</button>
     </div>
 }

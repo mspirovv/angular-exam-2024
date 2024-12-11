@@ -6,7 +6,7 @@
     border-radius: 0.5em;
     font-size: 0.9em;
     margin-top: 1em;
-    background-color: #e4e3e3; /* Matches body background */
+    background-color: #e4e3e3; 
 }
 
 .welcome h3 {
@@ -23,7 +23,7 @@
     padding: 1em;
     border-bottom: 1px solid #999;
     font-style: italic;
-    color: #333; /* Darker text for readability */
+    color: #333; 
 }
 
 .welcome a {

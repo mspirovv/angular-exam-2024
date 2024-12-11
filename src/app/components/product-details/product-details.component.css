@@ -12,8 +12,8 @@
   
   .product-image {
     width: 100%;
-    max-width: 350px; /* Увеличаваме максималната ширина на контейнера */
-    height: 250px; /* Може да се увеличи височината, за да направим изображението по-голямо */
+    max-width: 350px; 
+    height: 250px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -23,7 +23,7 @@
   .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Запазва съотношението на изображението без да го изрязва */
+    object-fit: contain; 
   }
   
   

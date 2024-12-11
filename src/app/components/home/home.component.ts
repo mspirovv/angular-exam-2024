@@ -11,7 +11,7 @@ import { Product } from '../../types/product';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  topProducts: Product[] = []; // Масив за съхранение на топ 5 продуктите
+  topProducts: Product[] = [];
 
   constructor(private apiService: ApiService) {}
 
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.getTopProducts();
   }
 
-  // Извиква метод от сервиза за вземане на топ 5 продукти
+
   getTopProducts(): void {
     console.log('Изпращам заявка за топ продукти');
     this.apiService.getTopProducts().subscribe(

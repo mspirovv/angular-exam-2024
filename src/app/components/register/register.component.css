@@ -1,4 +1,4 @@
-/* Container styling */
+
 .container {
     max-width: 400px;
     margin: 50px auto;
@@ -10,7 +10,6 @@
     background-color: #fff;
 }
 
-/* Fieldset styling */
 fieldset {
     border: none;
     padding: 0;
@@ -22,7 +21,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Form field styling */
 .field {
     position: relative;
     margin-bottom: 15px;
@@ -50,7 +48,6 @@ input:focus {
     border-color: #007BFF;
 }
 
-/* Error styling */
 .input-error {
     border-color: #FF6B6B;
     background-color: #FFF5F5;
@@ -63,7 +60,6 @@ input:focus {
     margin-bottom: 10px;
 }
 
-/* Button styling */
 button {
     width: 100%;
     padding: 10px;
@@ -85,7 +81,7 @@ button:hover:not(:disabled) {
     background-color: #0056b3;
 }
 
-/* Link styling */
+
 .text-center a {
     color: #007BFF;
     text-decoration: none;
@@ -96,12 +92,11 @@ button:hover:not(:disabled) {
     color: #0056b3;
 }
 
-/* Password group styling */
+
 div[formGroupName="passGroup"] {
     margin-bottom: 15px;
 }
 
-/* Responsive Design */
 @media (max-width: 500px) {
     .container {
         padding: 15px;

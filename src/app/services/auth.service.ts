@@ -9,7 +9,7 @@ import { userForAuth } from '../types/user';
 })
 export class AuthService {
 private apiUrl = environment.apiUrl;
-private userSubject = new BehaviorSubject<userForAuth | null>(null); // Променено на правилния тип
+private userSubject = new BehaviorSubject<userForAuth | null>(null);
 
   constructor(private http: HttpClient) {}
 
@@ -22,8 +22,8 @@ private userSubject = new BehaviorSubject<userForAuth | null>(null); // Пром
   }
 
   getCurrentUser() {
-    console.log("Returning user from getCurrentUser");  // Лог за да видим дали функцията се извиква
-    return this.userSubject.asObservable();  // Връща observable
+    console.log("Returning user from getCurrentUser");  
+    return this.userSubject.asObservable();  
   }
   
 }

@@ -1,77 +1,77 @@
 .profile {
-    max-width: 600px; /* Ограничаване на ширината */
-    margin: 0 auto; /* Центриране */
-    background-color: #f9f9f9; /* Светъл фон */
-    border: 1px solid #ddd; /* Лека рамка */
-    border-radius: 10px; /* Заоблени ъгли */
-    padding: 20px; /* Разстояние вътре */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Лека сянка */
+    max-width: 600px; 
+    margin: 0 auto; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .profile h3 {
-    text-align: center; /* Центриране на заглавието */
-    color: #333; /* Тъмен цвят на текста */
-    margin-bottom: 20px; /* Разстояние от съдържанието под заглавието */
+    text-align: center; 
+    color: #333; 
+    margin-bottom: 20px; 
 }
 
 .flex {
     display: flex;
-    justify-content: space-between; /* Разделяне на реда на две части */
-    margin-bottom: 15px; /* Разстояние между редовете */
+    justify-content: space-between; 
+    margin-bottom: 15px; 
 }
 
 .flex p {
     margin: 0;
-    font-size: 16px; /* По-голям текст */
-    color: #555; /* Средно-сив цвят */
+    font-size: 16px; 
+    color: #555; 
 }
 
 .error {
-    color: #ff4d4d; /* Ярко червен за грешки */
+    color: #ff4d4d; 
     font-size: 14px;
     margin-top: 5px;
 }
 
-/* Бутоните */
+
 .edit-button, .red-button, .green-button {
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
-    color: #fff; /* Бял цвят на текста */
+    color: #fff; 
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Основен фон за бутоните */
+
 .edit-button {
-    background-color: #6c63ff; /* Лилав */
+    background-color: #6c63ff; 
 }
 
 .red-button {
-    background-color: #ff4d4d; /* Червен */
+    background-color: #ff4d4d;
 }
 
 .green-button {
-    background-color: #28a745; /* Зелен */
+    background-color: #28a745;
 }
 
-/* Цвят при hover */
+
 .edit-button:hover {
-    background-color: #4d47d6; /* По-тъмен лилав */
+    background-color: #4d47d6; 
 }
 
 .red-button:hover {
-    background-color: #cc0000; /* По-тъмен червен */
+    background-color: #cc0000; 
 }
 
 .green-button:hover {
-    background-color: #1e7e34; /* По-тъмен зелен */
+    background-color: #1e7e34;
 }
 
-/* Стил за деактивирани бутони */
+
 .edit-button:disabled, .red-button:disabled, .green-button:disabled {
-    background-color: #ddd; /* Светлосив за деактивиран бутон */
-    cursor: not-allowed; /* Курсор "не е позволено" */
+    background-color: #ddd; 
+    cursor: not-allowed; 
 }
 
 .product-item {
@@ -111,7 +111,7 @@
 .view-details {
     margin-top: 10px;
     padding: 8px 12px;
-    background-color: #6c63ff; /* Лилав за основния фон */
+    background-color: #6c63ff; 
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -121,14 +121,14 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Цвят при hover за .view-details */
+
 .view-details:hover {
-    background-color: #4d47d6; /* По-тъмен лилав при hover */
-    transform: translateY(-2px); /* Малко движение */
+    background-color: #4d47d6; 
+    transform: translateY(-2px); 
 }
 
 .view-details:active {
-    transform: translateY(0); /* Възвръща обратно движението при натиск */
+    transform: translateY(0); 
 }
 
 @media (max-width: 768px) {

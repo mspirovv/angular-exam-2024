@@ -12,11 +12,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searchQuery: string = '';  // Стринг за търсене
-  searchResults: Product[] = [];  // Продукти, които ще се показват
-  isLoading: boolean = false;  // Индикатор за зареждане
-  currentPage: number = 1;  // Текуща страница
-  totalPages: number = 1;  // Общо страници
+  searchQuery: string = '';  
+  searchResults: Product[] = [];  
+  isLoading: boolean = false;  
+  currentPage: number = 1;  
+  totalPages: number = 1; 
 
   constructor(
     private apiService: ApiService,
@@ -25,21 +25,18 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // При отваряне на компонента, вземаме параметрите от URL-а
     this.route.queryParams.subscribe(params => {
-      this.searchQuery = params['query'] || '';  // Ако няма query параметър, използваме празен стринг
-      this.currentPage = +params['page'] || 1;  // Ако няма page параметър, използваме 1
+      this.searchQuery = params['query'] || '';  
+      this.currentPage = +params['page'] || 1;  
 
-      // Ако няма търсене, зареждаме продуктите от каталога
       if (!this.searchQuery.trim()) {
         this.loadCatalogProducts();
       } else {
-        this.performSearch();  // Ако има търсене, извършваме търсенето
+        this.performSearch();  
       }
     });
   }
 
-  // Метод за извършване на търсене
   performSearch(): void {
     if (this.searchQuery.trim() === '') {
       this.searchResults = [];
@@ -48,14 +45,13 @@ export class SearchComponent implements OnInit {
 
     this.isLoading = true;
 
-    // Извършваме търсенето с query и текущата страница
     this.apiService.searchProducts(this.searchQuery, this.currentPage).subscribe(
       response => {
-        this.searchResults = response.products;  // Съхраняваме резултатите
-        this.totalPages = response.totalPages;  // Съхраняваме броя на страниците
+        this.searchResults = response.products;  
+        this.totalPages = response.totalPages;  
         this.isLoading = false;
 
-        // Обновяване на URL-то със съответните параметри
+       
         this.updateUrl();
       },
       error => {
@@ -65,18 +61,17 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  // Метод за зареждане на продуктите от каталога
+  
   loadCatalogProducts(): void {
     this.isLoading = true;
 
-    // Заявка за всички продукти от каталога
     this.apiService.getProducts(this.currentPage).subscribe(
       response => {
-        this.searchResults = response.products;  // Продуктите, които се връщат
-        this.totalPages = response.totalPages;  // Броя на страниците
+        this.searchResults = response.products;  
+        this.totalPages = response.totalPages; 
         this.isLoading = false;
 
-        // Обновяване на URL-то със съответните параметри
+
         this.updateUrl();
       },
       error => {
@@ -86,31 +81,30 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  // Метод за промяна на страницата
+
   changePage(page: number): void {
-    if (page < 1 || page > this.totalPages) return;  // Проверяваме дали страницата е валидна
+    if (page < 1 || page > this.totalPages) return;  
 
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { page },  // Променяме параметъра за текущата страница
-      queryParamsHandling: 'merge'  // Запазваме другите параметри в URL
+      queryParams: { page },  
+      queryParamsHandling: 'merge'  
     });
 
     this.currentPage = page;
 
     if (this.searchQuery.trim()) {
-      this.performSearch();  // Ако има търсене, извършваме ново търсене
+      this.performSearch();  
     } else {
-      this.loadCatalogProducts();  // Ако няма търсене, зареждаме каталога
+      this.loadCatalogProducts();  
     }
   }
 
-  // Функция за проследяване на идентификатора на продукта в ngFor
+ 
   trackByProductId(index: number, product: any): number {
-    return product.id;  // Или използвай друг уникален идентификатор за продуктите
+    return product.id; 
   }
 
-  // Метод за актуализиране на URL-то с query параметрите
   updateUrl(): void {
     this.router.navigate([], {
       relativeTo: this.route,
@@ -118,7 +112,7 @@ export class SearchComponent implements OnInit {
         query: this.searchQuery,
         page: this.currentPage
       },
-      queryParamsHandling: 'merge'  // Запазваме другите параметри в URL
+      queryParamsHandling: 'merge'  
     });
   }
 }
