@@ -1,4 +1,6 @@
-
+@if (hasError) {
+    <app-error-msg />
+    }
 <div class="container">
     <form class="register" [formGroup]="form" (ngSubmit)="register()">
 
@@ -8,7 +10,7 @@
             <!-- username -->
             <p class="field field-icon">
                 <label for="username"><span><i class="fas fa-user"></i></span></label>
-                <input [class]="isFieldTextMissing('username') || isNotMinLength ? 'input-error' : '' " 
+                <input [class]="setUsernameClass(form.get('username'))"
                 type="text" name="username" id="username" placeholder="Johny" formControlName="username">
             </p>
             @if(form.get('username')?.touched){
@@ -28,7 +30,7 @@
             <!-- email -->
             <p class="field field-icon">
                 <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input [class]="isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : '' " type="email" name="email" id="email" placeholder="john.doe@gmail.com" formControlName="email">
+                <input [class]="setEmailClass(form.get('email'))" type="email" name="email" id="email" placeholder="john.doe@gmail.com" formControlName="email">
             </p>
             @if(form.get('email')?.touched){
                 <div>
@@ -80,11 +82,11 @@
             </div>
         }
 
-            <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Create Account</button>
+            <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Създай акаунт</button>
 
             <p class="text-center">
-                Have an account?
-                <a routerLink="/login">Log In</a>
+                Имаш акаунт?
+                <a routerLink="/login">Влез тук.</a>
             </p>
 
         </fieldset>

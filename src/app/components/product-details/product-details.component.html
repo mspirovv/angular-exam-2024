@@ -13,7 +13,7 @@
         
     </div>
         @if(isLoggedIn) {
-        <div><button class="like-button" (click)="toggleLike()">
+        <div class="buttons"><button class="like-button" (click)="toggleLike()">
           {{ currentUserId && currentUserId !== null && product.likesCount.includes(currentUserId) ? 'Премахни харесване' : 'Харесай' }}
         </button>
       </div>

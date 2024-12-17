@@ -12,19 +12,17 @@
             <li><a routerLink="/"><i class="fas fa-home"></i> Начало</a></li>
             <li><a routerLink="/catalog"><i class="fas fa-box-open"></i> Продукти</a></li>
             <li><a routerLink="/search"><i class="fas fa-search"></i> Търсене</a></li>
-            <li><a routerLink="/about"><i class="fas fa-info-circle"></i> За нас</a></li>
-            <li><a routerLink="/contact"><i class="fas fa-envelope"></i> Контакт</a></li>
             @if(isLoggedIn ){
                 <li class="user-profile-btn">
                     <a routerLink="/profile">
-                      <i class="fas fa-user-circle"></i> {{ username }}'s Profile
+                      <i class="fas fa-user-circle"></i> Моят профил
                     </a>
                   </li>
                   <li><a routerLink="/add-product"><i class="fas fa-box-open"></i> Добави продукт</a></li>
     
                 <li>
                     <a (click)="logout()">
-                      <i class="fas fa-sign-out-alt"></i> Logout
+                      <i class="fas fa-sign-out-alt"></i> Излез
                     </a>
                   </li>
             }   @else {

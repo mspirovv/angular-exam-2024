@@ -7,15 +7,18 @@
   .intro-text h1, .call-to-action h2 {
     font-size: 32px;
     font-weight: bold;
-    color: #333;
+    color: #010101;
     margin-bottom: 15px;
   }
   
   .intro-text p, .call-to-action p {
     font-size: 18px;
-    color: #666;
+    color: #010101;
     max-width: 800px;
     margin: 0 auto 20px;
+    font-weight: bold;
+    
+    
   }
   
   
@@ -139,3 +142,5 @@
   .top-products .call-to-action button:hover {
     background-color: #45a049;
   }
+
+  

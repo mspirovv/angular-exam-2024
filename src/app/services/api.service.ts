@@ -38,7 +38,7 @@ export class ApiService {
     return this.http.get<Product>(`http://localhost:3000/api/products/${productId}`);
   }
   
-  searchProducts(query: string, page: number = 1, limit: number = 10): Observable<any> {
+  searchProducts(query: string, page: number = 1, limit: number = 12): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/api/products/search`, {
         params: {
             query,
@@ -50,7 +50,7 @@ export class ApiService {
 
 getUserProducts(page: number, limit: number): Observable<ProductResponse> {
   return this.http.get<ProductResponse>(
-    `http://localhost:3000/api/products?page=${page}&limit=${limit}`
+    `http://localhost:3000/api/products?page=${page}&limit=${limit}`, { withCredentials: true }
   );
 }
   createProduct(productName: string , description: string , productCategory: string, productImage: string){
@@ -58,18 +58,18 @@ getUserProducts(page: number, limit: number): Observable<ProductResponse> {
     return this.http.post<Product>(`http://localhost:3000/api/products`, payLoad , { withCredentials: true })
   }
   editProduct(productId: string, updatedProduct: Product): Observable<Product> {
-    return this.http.put<Product>(`http://localhost:3000/api/products/${productId}`, updatedProduct);
+    return this.http.put<Product>(`http://localhost:3000/api/products/${productId}`, updatedProduct, { withCredentials: true });
   }  
   deleteProduct(id: string): Observable<any> {
-    return this.http.delete<any>(`http://localhost:3000/api/products/${id}`);
+    return this.http.delete<any>(`http://localhost:3000/api/products/${id}`, { withCredentials: true });
   }
 
   addLike(body: { productId: string, userId: string }) {
-    return this.http.post<any>(`http://localhost:3000/api/products/${body.productId}/like`, body);
+    return this.http.post<any>(`http://localhost:3000/api/products/${body.productId}/like`, body, { withCredentials: true });
   }
   
   removeLike(body: { productId: string, userId: string }) {
-    return this.http.post<any>(`http://localhost:3000/api/products/${body.productId}/unlike`, body);
+    return this.http.post<any>(`http://localhost:3000/api/products/${body.productId}/unlike`, body , { withCredentials: true });
   }
   
   

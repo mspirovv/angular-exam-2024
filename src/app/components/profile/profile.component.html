@@ -12,7 +12,7 @@
           <p>{{profileDetails.email}}</p>
       </div>
     
-      <button class="edit-button" (click)="toggleEditMode()">Edit</button>
+      <button class="edit-button" (click)="toggleEditMode()">Редактирай</button>
   </ng-container>
 }
 @else {
@@ -72,8 +72,8 @@
           }
       
           
-      <button class="red-button" (click)="onCancel($event)" >Cancel</button>
-      <button class="green-button" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Save</button>
+      <button class="red-button" (click)="onCancel($event)" >Откажи</button>
+      <button class="green-button" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Запази</button>
   </form>
 </ng-container>
 
@@ -83,19 +83,19 @@
 </div>
 
 <div class="products">
-  <h3>My Products:</h3>
+  <h3>Моите продукти:</h3>
   @if (products.length > 0) {
     @for ( product of products; track $index) {
       <div class="product-item">
         <img [src]="product.productImage" alt="{{ product.productName }}" />
         <p>{{ product.productName }}</p>
         <p>{{ product.productCategory }}</p>
-        <button class="view-details" [routerLink]="['/catalog', product._id]">View Details</button>
+        <button class="view-details" [routerLink]="['/catalog', product._id]">Виж повече</button>
       </div>
     }
   }
   @else {
-    <p>No products found.</p>
+    <p>Няма намерени продукти.</p>
   }
 </div>
 
@@ -104,14 +104,14 @@
     [disabled]="currentPage === 1"
     (click)="changePage(currentPage - 1)"
   >
-    Previous
+    Предишна
   </button>
-  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <span>Страница {{ currentPage }} от {{ totalPages }}</span>
   <button
     [disabled]="currentPage === totalPages || totalPages === 0"
     (click)="changePage(currentPage + 1)"
   >
-    Next
+    Следваща
   </button>
 </div>
 

@@ -4,8 +4,13 @@ import { UserService } from '../../services/user.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { EmailDirective } from '../../directives/email.directive';
 import { DOMAINS } from '../../constants';
-import { ErrorMsgComponent } from '../review-form/error-msg/error-msg.component';
+import {
+  setEmailErrorClass,
+  setPasswordErrorClass,
+} from '../../utils/set.dinamic.class';
+import { setButtonAttributes } from '../../utils/buttonStatus';
 import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
+import { ErrorMsgComponent } from '../../core/error-msg/error-msg.component';
 
 
 
@@ -20,6 +25,8 @@ import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
 export class LoginComponent {
   domains = DOMAINS;
   hasError: boolean = false;
+  errorMessage: string = '';
+
   constructor(private userService: UserService, private router: Router, private errorMsgService: ErrorMsgService){
     this.errorMsgService.apiError$.subscribe((err) => {
       this.hasError = !!err;
@@ -34,9 +41,34 @@ export class LoginComponent {
     }
 
     const {email,password} = form.value;
-    this.userService.login(email,password).subscribe(() => {
-      this.router.navigate(['/'])
-    }
-  );
+    
+    this.userService.login(email, password).subscribe({
+      next: () => {
+        this.hasError = false;
+        this.errorMsgService.clearError();
+        this.router.navigate(['/home']);
+        form.reset();
+      },
+      error: (error: any) => {
+        this.hasError = true;
+        this.errorMessage = error.message; 
+        this.errorMsgService.setError(this.errorMessage); 
+      },
+    });
   }
+
+  setEmailClass(email: any) {
+    return setEmailErrorClass(email);
+  }
+  
+  setPasswordClass(password: any) {
+    return setPasswordErrorClass(password);
+  }
+
+  setButton(form: any) {
+    return setButtonAttributes(form);
+  }
+  
 }
+
+

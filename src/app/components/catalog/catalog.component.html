@@ -8,7 +8,7 @@
         <img [src]="product.productImage" alt="{{ product.productName }}" />
         <h3>{{ product.productName }}</h3>
         <p>{{ product.description }}</p>
-        <button class="view-details" [routerLink]="['/catalog', product._id]">View Details</button>
+        <button class="view-details" [routerLink]="['/catalog', product._id]">Виж повече</button>
       </div>
     }
   }
@@ -16,8 +16,8 @@
 
 @if(totalPages > 1){
 <div class="pagination-container">
-  <button (click)="loadPage(currentPage - 1)" [disabled]="currentPage === 1"  class="pagination-btn">Previous</button>
-  <span>Page {{ currentPage }} of {{ totalPages }}</span>
-  <button (click)="loadPage(currentPage + 1)" [disabled]="currentPage === totalPages"  class="pagination-btn">Next</button>
+  <button (click)="loadPage(currentPage - 1)" [disabled]="currentPage === 1"  class="pagination-btn">Предишна</button>
+  <span>Страница {{ currentPage }} от {{ totalPages }}</span>
+  <button (click)="loadPage(currentPage + 1)" [disabled]="currentPage === totalPages"  class="pagination-btn">Следваща</button>
 </div>
 }

@@ -16,8 +16,6 @@ export interface User {
     password: string,
     _id: string,
     tel?: string,
-    token?: any; 
-
   }
 
   export interface profileDetails {

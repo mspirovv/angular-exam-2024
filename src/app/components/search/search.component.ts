@@ -16,7 +16,8 @@ export class SearchComponent implements OnInit {
   searchResults: Product[] = [];  
   isLoading: boolean = false;  
   currentPage: number = 1;  
-  totalPages: number = 1; 
+  totalPages: number = 1;
+  limit: number = 12; 
 
   constructor(
     private apiService: ApiService,
@@ -27,7 +28,8 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.searchQuery = params['query'] || '';  
-      this.currentPage = +params['page'] || 1;  
+      this.currentPage = +params['page'] || 1;
+      this.limit = +params['limit'] || 12  
 
       if (!this.searchQuery.trim()) {
         this.loadCatalogProducts();
@@ -45,7 +47,7 @@ export class SearchComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.apiService.searchProducts(this.searchQuery, this.currentPage).subscribe(
+    this.apiService.searchProducts(this.searchQuery, this.currentPage, this.limit).subscribe(
       response => {
         this.searchResults = response.products;  
         this.totalPages = response.totalPages;  
@@ -65,7 +67,7 @@ export class SearchComponent implements OnInit {
   loadCatalogProducts(): void {
     this.isLoading = true;
 
-    this.apiService.getProducts(this.currentPage).subscribe(
+    this.apiService.getProducts(this.currentPage,this.limit).subscribe(
       response => {
         this.searchResults = response.products;  
         this.totalPages = response.totalPages; 

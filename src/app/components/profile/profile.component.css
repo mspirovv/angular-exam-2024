@@ -1,5 +1,5 @@
 .profile {
-    max-width: 600px; 
+    max-width: 600px; /* Ограничаване на ширината */
     margin: 0 auto; 
     background-color: #f9f9f9; 
     border: 1px solid #ddd; 
@@ -44,7 +44,7 @@
 
 
 .edit-button {
-    background-color: #6c63ff; 
+    background-color: #4CAF50; 
 }
 
 .red-button {
@@ -111,7 +111,7 @@
 .view-details {
     margin-top: 10px;
     padding: 8px 12px;
-    background-color: #6c63ff; 
+    background-color: #4CAF50; 
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -154,7 +154,7 @@
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #6c63ff;
+    background-color: #4CAF50;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

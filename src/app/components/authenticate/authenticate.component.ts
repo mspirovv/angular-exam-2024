@@ -14,7 +14,6 @@ export class AuthenticateComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-   
     this.userService.getProfile().subscribe({
       next: () => {
         this.isAuthenticating = false;
@@ -26,8 +25,6 @@ export class AuthenticateComponent implements OnInit {
           this.isAuthenticating = false;
       },
     })
-  } 
+  }
+
 }
-
-
-

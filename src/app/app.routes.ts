@@ -18,12 +18,12 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'catalog', component: CatalogComponent },
     { path: 'catalog/:id', component: ProductDetailsComponent, },
-    { path: 'edit-product/:id', component: EditProductComponent,  },
+    { path: 'edit-product/:id', component: EditProductComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'profile', component: ProfileComponent, }, 
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }, 
     { path: 'error', component: ErrorMsgComponent },
-    { path: 'add-product', component: AddProductComponent, }, 
+    { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard] }, 
     { path: 'search', component: SearchComponent },
     { path: '**', component: Page404Component }
   ];

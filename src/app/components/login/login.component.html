@@ -1,58 +1,80 @@
-
-<div class="container">
-    <form class="login" #form="ngForm" (ngSubmit)="login(form)">
-
-        <fieldset>
-            <h2>Login Form</h2>
-
-            <p class="field field-icon">
-                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input [class]="(inputEmail?.touched &&inputEmail?.errors?.['required']) || (inputEmail?.touched && inputEmail?.errors?.['emailValidator']) ? 'input-error': ''" type="email" name="email" id="email" placeholder="john.doe@gmail.com" ngModel #inputEmail="ngModel" required="true" [appEmail]="domains">
-            </p>
-
-            @if(inputEmail?.touched){
-                @if (inputEmail?.errors?.['required']) {
-            <div><p class="error">
-                Email is required!
-            </p>   </div>
-        }
-        @if (inputEmail?.errors?.['emailValidator']) {
-            <div><p class="error">
-                Email is not valid!
-            </p>   </div>
-        }
+@if (hasError) {
+    <app-error-msg />
     }
-            <p class="field field-icon">
-              <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                <input [class]="(inputPassword?.touched &&inputPassword?.errors?.['required']) || (inputPassword?.touched && inputPassword?.errors?.['minlength']) ? 'input-error': ''"  type="password" name="password" id="password" placeholder="******" ngModel #inputPassword="ngModel" minlength="5" required="true">
-            </p>
-            @if(inputPassword.touched){
-            <div>
-                @if(inputPassword?.errors?.['required']){
-                <p class="error">
-                    Password is required!</p>
-                }
-                @if(inputPassword?.errors?.['minlength']){
-                    <p class="error">
-                        Password must be at least 5 characters!
-                    </p>
-                    }
-            </div>
-             }
-
-            <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : ''}">Login</button>
-
-            <p class="text-center">
-                Have an account?
-                <a routerLink="/register">Register</a>
-            </p>
-
-            @if(hasError) {
-                <div class="error">
-                   <p>  <app-error-msg /></p>
-                 </div>
-               }
-
+    
+    <div class="container">
+      <form class="login" #form="ngForm" (ngSubmit)="login(form)">
+        <fieldset>
+          <h2>Форма за вход</h2>
+    
+          <p class="field field-icon">
+            <label for="email"
+              ><span><i class="fas fa-envelope"></i></span
+            ></label>
+            <input
+              [class]="setEmailClass(email)"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="myemail@gmail.com"
+              ngModel
+              #email="ngModel"
+              required
+              [appEmail]="domains"
+            />
+          </p>
+          @if (email?.touched) {
+          <div>
+            @if (email?.errors?.['required']) {
+            <p class="error">Email is required!</p>
+            }
+            <!--    -->
+            @if (email?.errors?.['emailValidator']) {
+            <p class="error">Email is not valid!</p>
+            }
+          </div>
+          }
+    
+          <p class="field field-icon">
+            <label for="password"
+              ><span><i class="fas fa-lock"></i></span
+            ></label>
+            <input
+              [class]="setPasswordClass(password)"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="******"
+              ngModel
+              #password="ngModel"
+              required
+              minlength="5"
+            />
+          </p>
+          @if (password?.touched) {
+          <div>
+            @if (password?.errors?.['required']) {
+            <p class="error">Password is required!</p>
+            }
+            <!--    -->
+            @if (password?.errors?.['minlength']) {
+            <p class="error">Password must be at least 5 characters!</p>
+            }
+          </div>
+          }
+    
+          <button
+            [disabled]="setButton(form).disabled"
+            [style]="setButton(form).style"
+          >
+            Вход
+          </button>
+    
+          <p class="text-center">
+            Нямаш акаунт?
+            <a routerLink="/register">Регистрирай се    </a>
+          </p>
         </fieldset>
-    </form>
-</div>
+      </form>
+    </div>
+    

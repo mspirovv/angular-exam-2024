@@ -1,15 +1,15 @@
 
 <div class="search-container">
-    <h2>Search Products</h2>
+    <h2>Търси продукти</h2>
     <div class="search-bar">
-      <input [(ngModel)]="searchQuery" placeholder="Search for products..." />
-      <button (click)="performSearch()">Search</button>
+      <input [(ngModel)]="searchQuery" placeholder="Напишете какво търсите..." />
+      <button (click)="performSearch()">Търсене</button>
     </div>
   </div>
   
   
   @if(isLoading) {
-    <div class="loading">Loading...</div>
+    <div class="loading">Зареждане...</div>
   }
   
 
@@ -20,13 +20,13 @@
           <img [src]="product.productImage" alt="Product image" />
           <h3>{{ product.productName }}</h3>
           <p>{{ product.description }}</p>
-          <button class="view-details" [routerLink]="['/catalog', product._id]">View Details</button>
+          <button class="view-details" [routerLink]="['/catalog', product._id]">Виж повече</button>
         </div>
       }
     </div>
   }
   @if (totalPages > 1) {
-    <div class="pagination">
+    <div class="pagination-container">
       <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
         Previous
       </button>

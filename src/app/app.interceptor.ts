@@ -5,30 +5,30 @@ import { inject } from '@angular/core';
 import { ErrorMsgService } from '../app/core/error-msg/error-msg.service';
 import { Router } from '@angular/router';
 
-const {apiUrl} = environment
+const { apiUrl } = environment;
+const API = '/api';
 
 export const appInterceptor: HttpInterceptorFn = (req, next) => {
-  const API = '/api';
-  if (req.url.startsWith(API)){
+  if (req.url.startsWith(API)) {
     req = req.clone({
-      url: req.url.replace(API,apiUrl),
+      url: req.url.replace(API, apiUrl),
       withCredentials: true,
-    })
+    });
   }
-  
+
   const errorMsgService = inject(ErrorMsgService);
-  const router = inject(Router)
+  const router = inject(Router);
 
   return next(req).pipe(
     catchError((err) => {
-      if (err.status === 401) {
-      router.navigate(['/login'])
+      if (err.status === 401 && err.error?.message === 'Invalid token!') {
+        router.navigate(['/home']);
       } else {
-      errorMsgService.setError(err);
-      router.navigate(['/error'])
+        errorMsgService.setError(err);
+        // router.navigate(['/error']);
       }
-   
+
       return [err];
     })
-  )
+  );
 };
