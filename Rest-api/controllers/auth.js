@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const {
     userModel,
     tokenBlacklistModel
@@ -88,42 +87,19 @@ function logout(req, res) {
 function getProfileInfo(req, res, next) {
     const { _id: userId } = req.user;
 
-    userModel.findOne({ _id: userId }, { password: 0, __v: 0 }) 
+    userModel.findOne({ _id: userId }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
         .then(user => { res.status(200).json(user) })
         .catch(next);
 }
 
 function editProfileInfo(req, res, next) {
     const { _id: userId } = req.user;
-    const { tel, username, email, password } = req.body; 
-  
-    const updateData = { username, email }; 
-    if (password) {
-      updateData.password = bcrypt.hashSync(password, 10); 
-    }
-  
-    userModel
-      .findOneAndUpdate({ _id: userId }, updateData, { runValidators: true, new: true })
-      .then((updatedUser) => res.status(200).json(updatedUser))
-      .catch(next);
-  }
-  
-  
-function getCurrentUser(req, res, next) {
-    if (!req.user) {
-        return res.status(401).send({ message: 'Unauthorized' }); 
-    }
+    const { tel, username, email } = req.body;
 
-    const { _id, email, username } = req.user;
-
-    res.status(200).json({
-        _id,
-        email,
-        username
-    });
+    userModel.findOneAndUpdate({ _id: userId }, { tel, username, email }, { runValidators: true, new: true })
+        .then(x => { res.status(200).json(x) })
+        .catch(next);
 }
-
-
 
 module.exports = {
     login,
@@ -131,5 +107,4 @@ module.exports = {
     logout,
     getProfileInfo,
     editProfileInfo,
-    getCurrentUser
 }

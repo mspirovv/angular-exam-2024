@@ -7,14 +7,14 @@
     
     router.post('/' , auth() ,productController.createProduct);
     router.get('/', productController.getProducts);
-    router.get('/', productController.getUserProducts);
+    router.get('/user/:userId', productController.getUserProducts);
     router.get('/top-products', productController.getTopProducts);
-    router.post('/:id/like', productController.likeProduct); 
-    router.post('/:id/unlike', productController.unlikeProduct); 
+    router.post('/:id/like', auth(),productController.likeProduct); 
+    router.post('/:id/unlike',auth(), productController.unlikeProduct); 
     router.get('/search', productController.searchProducts);
     router.get('/:productId', productController.getProduct);
-    router.put('/:productId', productController.editProduct);
-    router.delete('/:productId', productController.deleteProduct);
+    router.put('/:productId',auth(), productController.editProduct);
+    router.delete('/:productId',auth(), productController.deleteProduct);
 
    
  

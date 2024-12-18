@@ -8,12 +8,12 @@ import { Product, ProductResponse } from '../../types/product';
 import { ApiService } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
 import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
-import { ErrorMsgComponent } from '../../core/error-msg/error-msg.component';
+
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink,ErrorMsgComponent],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
@@ -43,14 +43,6 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService, private apiService: ApiService, private errorMsgService: ErrorMsgService) {}
 
   ngOnInit(): void {
-    // const { username, email } = this.userService.user!;
-    // this.profileDetails = { username, email };
-
-    // this.form.setValue({
-    //   username,
-    //   email,
-    //   password: '',
-    // });
     this.userService.user$.subscribe({
       next: (user) => {
         if (user) {
@@ -58,15 +50,15 @@ export class ProfileComponent implements OnInit {
           this.errorMsgService.clearError();
           const { _id, username, email, password } = user!;
           this.profileDetails = { username, email };
-          console.log(user)
-                console.log('Cookies:', document.cookie);
-
-
+    
           this.loadUserProducts();
+        }  else {
+          console.log('No user data available');
         }
       },
-      error: () => {
+      error: (err) => {
         this.hasError = true;
+        console.error('Error fetching user:', err); 
       },
     });
 
@@ -76,7 +68,13 @@ export class ProfileComponent implements OnInit {
 
   loadUserProducts(): void {
   
-    this.apiService.getUserProducts(this.currentPage, this.pageSize).subscribe(
+    const userId = this.userService.user?._id;
+    if (!userId){
+      console.error('User ID is missing');
+      return
+  
+    }
+    this.apiService.getUserProducts(userId,this.currentPage, this.pageSize).subscribe(
       (response: ProductResponse) => {
         this.products = response.products;
         this.totalProducts = response.totalProducts || 0;

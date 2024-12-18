@@ -48,9 +48,9 @@ export class ApiService {
     });
 }
 
-getUserProducts(page: number, limit: number): Observable<ProductResponse> {
+getUserProducts(userId: string,page: number, limit: number): Observable<ProductResponse> {
   return this.http.get<ProductResponse>(
-    `http://localhost:3000/api/products?page=${page}&limit=${limit}`, { withCredentials: true }
+    `http://localhost:3000/api/products/user/${userId}?page=${page}&limit=${limit}`, { withCredentials: true }
   );
 }
   createProduct(productName: string , description: string , productCategory: string, productImage: string){

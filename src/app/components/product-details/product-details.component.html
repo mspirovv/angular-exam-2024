@@ -12,20 +12,21 @@
       
         
     </div>
-        @if(isLoggedIn) {
+        @if(isLoggedIn && !isCreator) {
         <div class="buttons"><button class="like-button" (click)="toggleLike()">
           {{ currentUserId && currentUserId !== null && product.likesCount.includes(currentUserId) ? 'Премахни харесване' : 'Харесай' }}
         </button>
       </div>
+    }
   
       
-        @if(isCreator) {
+        @if(isLoggedIn && isCreator) {
           <div class="buttons">
             <button class="edit-btn" [routerLink]="['/edit-product', product._id]">Редактирай</button>
             <button class="delete-btn" (click)="onDeleteProduct()">Изтрий</button>
           </div>
         }
-      }
     </div>
   }
+  
   
